@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabs to TXT — settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="preview" aria-labelledby="preview-heading">
+        <h2 class="preview__heading" id="preview-heading">Files this backup would write</h2>
+        <ul class="preview__list" id="preview" aria-live="polite">
+          <li class="preview__empty">Reading your windows…</li>
+        </ul>
+        <p class="preview__root" id="preview-root"></p>
+      </section>
+
+      <form class="form" id="form" novalidate>
+        <div class="field">
+          <label class="field__label" for="intervalMinutes">Save every</label>
+          <div class="field__control field__control--inline">
+            <input
+              class="input input--number"
+              type="number"
+              id="intervalMinutes"
+              min="1"
+              max="1440"
+              step="1"
+              inputmode="numeric"
+            />
+            <span class="field__unit">minutes</span>
+          </div>
+          <p class="field__hint">
+            Between 1 minute and 24 hours. The countdown restarts when you save.
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="folder">Folder</label>
+          <div class="field__control">
+            <input
+              class="input"
+              type="text"
+              id="folder"
+              spellcheck="false"
+              placeholder="tab-backups"
+            />
+          </div>
+          <p class="field__hint">
+            A folder inside the download directory set in Firefox Settings → Downloads. Subfolders
+            work (<code>backups/firefox</code>). Leave it empty to write straight into the download
+            folder.
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="filePrefix">File name starts with</label>
+          <div class="field__control">
+            <input
+              class="input"
+              type="text"
+              id="filePrefix"
+              spellcheck="false"
+              placeholder="window"
+            />
+          </div>
+          <p class="field__hint">The window number and the timestamp are appended to it.</p>
+        </div>
+
+        <fieldset class="field field--checks">
+          <legend class="field__label">File contents</legend>
+          <label class="check"
+            ><input type="checkbox" id="includeHeader" /><span
+              >Write a header with the date and window number</span
+            ></label
+          >
+          <label class="check"
+            ><input type="checkbox" id="includeTitles" /><span
+              >Write each tab title above its link, as a <code>#</code> comment</span
+            ></label
+          >
+        </fieldset>
+
+        <fieldset class="field field--checks">
+          <legend class="field__label">What gets saved</legend>
+          <label class="check"
+            ><input type="checkbox" id="skipUnchanged" /><span
+              >Skip a run when no tab has changed since the last one</span
+            ></label
+          >
+          <label class="check"
+            ><input type="checkbox" id="includePrivateWindows" /><span
+              >Include private windows</span
+            ></label
+          >
+          <p class="field__hint" id="private-hint"></p>
+          <label class="check"
+            ><input type="checkbox" id="hideFromDownloadHistory" /><span
+              >Keep these files out of the Downloads list</span
+            ></label
+          >
+          <p class="field__hint">The file stays on disk; only the download entry is removed.</p>
+        </fieldset>
+
+        <div class="actions">
+          <button class="button button--primary" type="submit" id="save">Save changes</button>
+          <button class="button" type="button" id="backup-now">Save a backup now</button>
+          <button class="button button--quiet" type="button" id="reset">Restore defaults</button>
+          <p class="actions__feedback" id="feedback" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <footer class="status" id="status"></footer>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

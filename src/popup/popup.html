@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tabs to TXT</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <label class="switch" for="enabled">
+      <span class="switch__text">
+        <span class="switch__label">Automatic backup</span>
+        <span class="switch__state" id="state" aria-live="polite">Loading…</span>
+      </span>
+      <input type="checkbox" id="enabled" class="switch__input" />
+      <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+    </label>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

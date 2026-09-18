@@ -1,0 +1,115 @@
+:root {
+  --ink: #22262d;
+  --muted: #5d6470;
+  --paper: #ffffff;
+  --rule: #d8dbe1;
+  --track: #c7cbd3;
+  --live: #1a7f64;
+  --font: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eceef2;
+    --muted: #a2a9b5;
+    --paper: #23262c;
+    --rule: #3a3f48;
+    --track: #4b515b;
+    --live: #3fa98a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 244px;
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 13px;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.switch__text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.switch__label {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.switch__state {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* The input stays in the accessibility tree and drives the visual track. */
+.switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.switch__track {
+  position: relative;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--track);
+  transition: background-color 120ms ease-out;
+}
+
+.switch__knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 35%);
+  transition: transform 120ms ease-out;
+}
+
+.switch__input:checked + .switch__track {
+  background: var(--live);
+}
+
+.switch__input:checked + .switch__track .switch__knob {
+  transform: translateX(16px);
+}
+
+.switch__input:focus-visible + .switch__track {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.switch__input:disabled + .switch__track {
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch__track,
+  .switch__knob {
+    transition: none;
+  }
+}

@@ -1,0 +1,31 @@
+name: Feature request
+description: Suggest a change to what the extension does.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do that the extension makes hard today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like it to do
+      description: Describe the behaviour, including where the setting would live.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried instead
+      description: Other extensions, scripts, or settings, and why they fell short.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      description: The extension writes tab URLs to text files on a timer. Requests outside that tend to be declined.
+      options:
+        - label: This fits that scope, or I have explained why it should grow
+          required: true

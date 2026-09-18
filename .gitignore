@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+web-ext-artifacts/
+*.xpi
+*.zip
+
+# Local tooling
+.web-ext-profile/
+.DS_Store
+*.log
+.env

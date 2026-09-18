@@ -1,0 +1,71 @@
+name: Bug report
+description: Something does not work the way the README says it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check the [known limitations](../../blob/main/README.md#limitations-worth-knowing) first — custom folders outside the download directory and unstable window numbering are expected behaviour.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Set the interval to 1 minute and the folder to "tab-backups"
+        2. Open two windows
+        3. Wait for the next run
+        4. Only one file appears
+    validations:
+      required: true
+  - type: input
+    id: firefox-version
+    attributes:
+      label: Firefox version
+      description: From about:support → Version
+      placeholder: "142.0.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: extension-version
+    attributes:
+      label: Extension version
+      description: From about:addons, or the commit you are running
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Relevant settings
+      description: Interval, folder, and any checkbox you changed from the default.
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: From about:debugging → This Firefox → Inspect on this extension. Remove anything private.
+      render: text
+  - type: checkboxes
+    id: downloads-setting
+    attributes:
+      label: Firefox download setting
+      options:
+        - label: Firefox is set to "Save files to…" rather than "Always ask you where to save files"
+          required: true
